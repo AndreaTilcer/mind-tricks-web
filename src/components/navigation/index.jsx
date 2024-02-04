@@ -1,5 +1,5 @@
 import React from 'react';
-import {Outlet} from 'react-router-dom'
+import {Link, Outlet} from 'react-router-dom'
 import '../../index.css'
 import {useState} from 'react'
 import {Dialog} from '@headlessui/react'
@@ -11,17 +11,17 @@ import instagram from '/src/assets/instagram.svg'
 import youtube from '/src/assets/youtube.svg'
 
 export const navigation = [
-    {name: 'Naše služby', href: '/sluzby'},
-    {name: 'O nás', href: '/o-nas'},
-    {name: 'Blog', href: '/blog'},
-    {name: 'Kontakty', href: '/kontakty'},
+    {name: 'Naše služby', href: "/sluzby"},
+    {name: 'O nás', href: "/o-nas"},
+    {name: 'Blog', href: "/blog"},
+    {name: 'Kontakty', href: "/kontakty"},
 ]
 
 export const socials = [
-    {name: 'youtube', href: 'http://www.youtube.com', src: youtube, alt: 'Odkaz na Youtube', size: 8},
-    {name: 'instagram', href: 'http://www.instagram.com', src: instagram, alt: 'Odkaz na Instagram', size: 8},
-    {name: 'linkedin', href: 'http://www.linkedin.com', src: linkedin, alt: 'Odkaz na Linkedin', size: 7},
-    {name: 'discord', href: 'http://www.discord.com', src: discord, alt: 'Odkaz na Discord', size: 7}
+    {name: 'youtube', href: "http://www.youtube.com", src: youtube, alt: 'Odkaz na Youtube', size: 8},
+    {name: 'instagram', href: "http://www.instagram.com", src: instagram, alt: 'Odkaz na Instagram', size: 8},
+    {name: 'linkedin', href: "http://www.linkedin.com", src: linkedin, alt: 'Odkaz na Linkedin', size: 7},
+    {name: 'discord', href: "http://www.discord.com", src: discord, alt: 'Odkaz na Discord', size: 7}
 ]
 
 
@@ -41,32 +41,33 @@ export function Navigation() {
                 </div>
                 <header
                     className="p-6 h-20 absolute inset-x-0 top-0 z-50 border-slate-700 border-b drop-shadow-slate-300/50">
-                    <nav className="mx-auto flex max-w-7xl items-center justify-end w-full mb-4 lg:px-8" aria-label="Global">
-                            <div className="flex w-full lg:hidden">
-                                <button
-                                    type="button"
-                                    className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400"
-                                    onClick={() => setMobileMenuOpen(true)}
-                                >
-                                    <span className="sr-only">Open main menu</span>
-                                    <Bars3Icon className="h-6 w-6" aria-hidden="true"/>
-                                </button>
-                            </div>
+                    <nav className="mx-auto flex max-w-7xl items-center justify-end w-full mb-4 lg:px-8"
+                         aria-label="Global">
+                        <div className="flex w-full lg:hidden">
+                            <button
+                                type="button"
+                                className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400"
+                                onClick={() => setMobileMenuOpen(true)}
+                            >
+                                <span className="sr-only">Open main menu</span>
+                                <Bars3Icon className="h-6 w-6" aria-hidden="true"/>
+                            </button>
+                        </div>
                         <div className="flex justify-between w-full">
                             <div className="hidden lg:flex lg:gap-x-8 items-center justify-center">
                                 {navigation.map((item) => (
-                                    <a key={item.name} href={item.href}
-                                       className="transition ease-in-out py-2 px-4 rounded-xl text-sm font-michroma text-white hover:text-sky-300 hover:-translate-y-1 hover:scale-110 duration-300">
+                                    <Link key={item.name} to={item.href}
+                                          className="transition ease-in-out py-2 px-4 rounded-xl text-sm font-michroma text-white hover:text-sky-300 hover:-translate-y-1 hover:scale-110 duration-300">
                                         {item.name}
-                                    </a>
+                                    </Link>
                                 ))}
                             </div>
                             <div className="hidden lg:flex items-center justify-center gap-4">
                                 {socials.map((item) => (
-                                    <a key={item.name} href={item.href}
-                                       className={`transition-all duration-300 rounded-xl text-sm font-semibold fill-white ${(item.name === 'discord' || item.name === 'linkedin') ? 'p-0.5' : ''} hover:shadow hover:shadow-sky-300 hover:-translate-y-1 hover:scale-110 group-hover:-inset-1 group-hover:duration-200 animate-tilt`}>
-                                        <img className={`w-${item.size} h-${item.size}`} alt={item.alt} src={item.src} />
-                                    </a>
+                                    <Link key={item.name} to={item.href}
+                                          className={`transition-all duration-300 rounded-xl text-sm font-semibold fill-white ${(item.name === 'discord' || item.name === 'linkedin') ? 'p-0.5' : ''} hover:shadow hover:shadow-sky-300 hover:-translate-y-1 hover:scale-110 group-hover:-inset-1 group-hover:duration-200 animate-tilt`}>
+                                        <img className={`w-${item.size} h-${item.size}`} alt={item.alt} src={item.src}/>
+                                    </Link>
                                 ))}
                             </div>
                         </div>
@@ -98,21 +99,23 @@ export function Navigation() {
                                 <div className="-my-6">
                                     <div className="space-y-2 py-6">
                                         {navigation.map((item) => (
-                                            <a
-                                                key={item.name}
+                                            <Link
+                                                to={item.name}
                                                 href={item.href}
                                                 className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-800"
                                             >
                                                 {item.name}
-                                            </a>
+                                            </Link>
                                         ))}
                                     </div>
                                     <div className="border-t border-slate-700 mt-10 flex items-center gap-2">
                                         {socials.map((item) => (
-                                            <a key={item.name} href={item.href}
-                                               className="pt-4 transition ease-in-out rounded-xl text-sm font-semibold fill-white hover:fill-blue-300 hover:-translate-y-1 hover:scale-110 duration-300">
-                                                <img className="w-14 h-14 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-800" alt={item.alt} src={item.src} />
-                                            </a>
+                                            <Link key={item.name} to={item.href}
+                                                  className="pt-4 transition ease-in-out rounded-xl text-sm font-semibold fill-white hover:fill-blue-300 hover:-translate-y-1 hover:scale-110 duration-300">
+                                                <img
+                                                    className="w-14 h-14 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-800"
+                                                    alt={item.alt} src={item.src}/>
+                                            </Link>
                                         ))}
                                     </div>
                                 </div>
