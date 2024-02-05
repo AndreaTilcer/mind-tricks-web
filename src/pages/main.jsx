@@ -12,7 +12,7 @@ export function Main() {
 
     return (
         <PageLayout>
-            <H1 text="Psychologické poradenství pro hráče sportu a e - sportu" />
+            <H1 text="Psychologické poradenství pro hráče sportu a e - sportu" />
             <p className="mt-6 text-lg leading-8 text-blue-100">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium assumenda consequatur cum
                 dolore enim eos impedit iste laboriosam magnam, magni nihil officiis placeat quasi qui quidem
